@@ -7,23 +7,26 @@ public class MyHeap {
     System.out.println("swap: " + printArr(data));
 
     while (2 * elIdx + 1 < size || 2 * elIdx + 2 < size) {
-      if (data[elIdx] >= data[2 * elIdx + 1] && data[elIdx] >= data[2 * elIdx + 2])
+      int leftChildIdx = 2 * elIdx + 1;
+      int rightChildIdx = 2 * elIdx + 2;
+
+      if (data[elIdx] >= data[leftChildIdx] && data[elIdx] >= data[rightChildIdx]) //children aren't bigger, stop
         return;
 
-      else if ( (2 * elIdx + 1 <= size) && (2 * elIdx + 2 > size) ) { //only have left branch
-        swap(data, elIdx, 2 * elIdx + 1);
-        elIdx = 2 * elIdx + 1;
+      else if ( (leftChildIdx < size) && (rightChildIdx >= size) ) { //only have left branch
+        swap(data, elIdx, leftChildIdx);
+        elIdx = leftChildIdx;
       }
 
       else {
-        if (data[2 * elIdx + 1] >= data[2 * elIdx + 2]) {
-          swap(data, elIdx, 2 * elIdx + 1);
-          elIdx = 2 * elIdx + 1;
+        if (data[leftChildIdx] >= data[rightChildIdx]) { //left child is bigger
+          swap(data, elIdx, leftChildIdx);
+          elIdx = leftChildIdx;
         }
 
-        else {
-          swap(data, elIdx, 2 * elIdx + 2);
-          elIdx = 2 * elIdx + 2;
+        else { //right child is bigger
+          swap(data, elIdx, rightChildIdx);
+          elIdx = rightChildIdx;
         }
       }
 
@@ -31,6 +34,7 @@ public class MyHeap {
     }
   }
 
+  //Just for debugging, prints idx w/ data
   private static String printArr(int[] data) {
     String output = "";
     for (int i = 0; i < data.length; ++i) {
@@ -40,8 +44,8 @@ public class MyHeap {
     return output;
   }
 
+  //idx1 is parent el, idx2 is child el
   private static int[] swap(int[] data, int idx1, int idx2) {
-    //idx1 is parent el, idx2 is child el
     int temp = data[idx1];
     data[idx1] = data[idx2];
     data[idx2] = temp;

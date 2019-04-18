@@ -1,11 +1,13 @@
 public class MyHeap {
-  private static void pushDown(int[] data, int size, int index) {
+  public static void pushDown(int[] data, int size, int index) {
     //Swap the element at the desired index with the topmost element so that it can be pushed down
+    System.out.println(printArr(data));
     swap(data, 0, index);
     int elIdx = 0;
+    System.out.println("swap: " + printArr(data));
 
-    while (elIdx <= size) {
-      if (2 * elIdx + 1 > size) //at bottomost branch, can't go any lower
+    while (2 * elIdx + 1 < size || 2 * elIdx + 2 < size) {
+      if (data[elIdx] >= data[2 * elIdx + 1] && data[elIdx] >= data[2 * elIdx + 2])
         return;
 
       else if ( (2 * elIdx + 1 <= size) && (2 * elIdx + 2 > size) ) { //only have left branch
@@ -24,7 +26,18 @@ public class MyHeap {
           elIdx = 2 * elIdx + 2;
         }
       }
+
+      System.out.println(printArr(data));
     }
+  }
+
+  private static String printArr(int[] data) {
+    String output = "";
+    for (int i = 0; i < data.length; ++i) {
+      output += data[i] + "(" + i + ")" + " ";
+    }
+
+    return output;
   }
 
   private static int[] swap(int[] data, int idx1, int idx2) {

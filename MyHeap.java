@@ -8,7 +8,7 @@ public class MyHeap {
     return data;
   }
 
-  public static void pushDown(int[] data, int size, int index) {
+  private static void pushDown(int[] data, int size, int index) {
     //Swap the element at the desired index with the topmost element so that it can be pushed down
     swap(data, 0, index);
 
@@ -40,7 +40,7 @@ public class MyHeap {
     }
   }
 
-  public static void pushUp(int[] data, int index) {
+  private static void pushUp(int[] data, int index) {
     //Swap the element at the desired index with the bottomost element so that it can be pushed up
     int size = data.length;
     swap(data, size - 1, index);

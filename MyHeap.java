@@ -20,7 +20,6 @@ public class MyHeap {
         if (data[index] < data[leftChildIdx])
           swap(data, index, leftChildIdx); //do the final swap so larger child is swapped with smaller parent
 
-
         return;
       }
 
@@ -41,21 +40,22 @@ public class MyHeap {
     }
   }
 
-  private static void pushUp(int[] data, int index) {
+  public static void pushUp(int[] data, int index) {
     //Swap the element at the desired index with the bottomost element so that it can be pushed up
     int size = data.length;
     swap(data, size - 1, index);
-    int elIdx = size - 1;
+    index =  size - 1;
 
-    while ( (elIdx - 1) / 2 >= 0) {
-      int parentIdx = (elIdx - 1) / 2;
+    while ( (index - 1) / 2 >= 0) {
+      int parentIdx = (index - 1) / 2;
 
-      if (data[elIdx] <= data[parentIdx]) //parent is bigger, stop
+      if (data[index] <= data[parentIdx]) { //parent is bigger, stop
         return;
+      }
 
       else { //parent is smaller, keep going
-        swap(data, elIdx, parentIdx);
-        elIdx = parentIdx;
+        swap(data, index, parentIdx);
+        index = parentIdx;
       }
     }
   }

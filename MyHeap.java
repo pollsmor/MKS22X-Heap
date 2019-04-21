@@ -39,10 +39,10 @@ public class MyHeap {
     while ( (elIdx - 1) / 2 >= 0) {
       int parentIdx = (elIdx - 1) / 2;
 
-      if (data[elIdx] >= data[parentIdx]) //parent is smaller, stop
+      if (data[elIdx] <= data[parentIdx]) //parent is bigger, stop
         return;
 
-      else { //parent is bigger, keep going
+      else { //parent is smaller, keep going
         swap(data, elIdx, parentIdx);
         elIdx = parentIdx;
       }

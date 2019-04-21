@@ -13,7 +13,8 @@ public class Driver {
 
     System.out.println(HeapHelp.toString(test));
 
-    MyHeap.pushDown(test, 10, 10);
+    //MyHeap.pushDown(test, 10, 10);
+    MyHeap.pushUp(test, 2);
 
     System.out.println(HeapHelp.toString(test));
   }

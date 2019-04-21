@@ -14,7 +14,7 @@ public class Driver {
 
     System.out.println(HeapHelp.toString(test3));
     //MyHeap.pushDown(test, 21, 20);
-    MyHeap.pushUp(test3, 3);
+    //MyHeap.pushUp(test3, 3);
     //MyHeap.heapify(test2);
     //MyHeap.heapsort(test2);
 

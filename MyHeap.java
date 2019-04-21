@@ -8,35 +8,34 @@ public class MyHeap {
     return data;
   }
 
-  private static void pushDown(int[] data, int size, int index) {
+  public static void pushDown(int[] data, int size, int index) {
     //Swap the element at the desired index with the topmost element so that it can be pushed down
     swap(data, 0, index);
-    int elIdx = 0;
 
-    while (2 * elIdx + 1 < size || 2 * elIdx + 2 < size) {
-      int leftChildIdx = 2 * elIdx + 1;
-      int rightChildIdx = 2 * elIdx + 2;
+    while (2 * index + 1 < size || 2 * index + 2 < size) {
+      int leftChildIdx = 2 * index + 1;
+      int rightChildIdx = 2 * index + 2;
 
       if (rightChildIdx == size)  { //only have left branch
-        if (data[elIdx] >= data[leftChildIdx])
-          return;
+        if (data[index] < data[leftChildIdx])
+          swap(data, index, leftChildIdx); //do the final swap so larger child is swapped with smaller parent
 
-        swap(data, elIdx, leftChildIdx);
+
         return;
       }
 
-      else if (data[elIdx] >= data[leftChildIdx] && data[elIdx] >= data[rightChildIdx]) //children aren't bigger, stop
+      else if (data[index] >= data[leftChildIdx] && data[index] >= data[rightChildIdx]) //children aren't bigger, stop
         return;
 
       else {
         if (data[leftChildIdx] >= data[rightChildIdx]) { //left child is bigger
-          swap(data, elIdx, leftChildIdx);
-          elIdx = leftChildIdx;
+          swap(data, index, leftChildIdx);
+          index = leftChildIdx;
         }
 
         else { //right child is bigger
-          swap(data, elIdx, rightChildIdx);
-          elIdx = rightChildIdx;
+          swap(data, index, rightChildIdx);
+          index = rightChildIdx;
         }
       }
     }

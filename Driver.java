@@ -1,9 +1,8 @@
 public class Driver {
   private static String printArr(int[] data) {
     String output = "";
-    for (int i = 0; i < data.length; ++i) {
-      output += data[i] + "(" + i + ")" + " ";
-    }
+    for (int i = 0; i < data.length; ++i)
+      output += data[i] + " ";
 
     return output;
   }
@@ -15,8 +14,10 @@ public class Driver {
 
     //MyHeap.pushDown(test, 10, 10);
     //MyHeap.pushUp(test, 2);
-    MyHeap.heapify(test);
+    //MyHeap.heapify(test);
+    MyHeap.heapsort(test);
 
-    System.out.println(HeapHelp.toString(test));
+    //System.out.println(HeapHelp.toString(test));
+    System.out.println(printArr(test));
   }
 }

@@ -1,14 +1,4 @@
 public class MyHeap {
-  //Just for debugging, prints idx w/ data
-  private static String printArr(int[] data) {
-    String output = "";
-    for (int i = 0; i < data.length; ++i) {
-      output += data[i] + "(" + i + ")" + " ";
-    }
-
-    return output;
-  }
-
   //idx1 is parent el, idx2 is child el
   private static int[] swap(int[] data, int idx1, int idx2) {
     int temp = data[idx1];
@@ -74,6 +64,13 @@ public class MyHeap {
   }
 
   public static void heapsort(int[] data) {
+    heapify(data);
+    int size = data.length;
 
+    while (size > 1) {
+      swap(data, 0, size - 1);
+      --size;
+      pushDown(data, size, 0);
+    }
   }
 }

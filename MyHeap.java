@@ -1,5 +1,24 @@
 public class MyHeap {
-  public static void pushDown(int[] data, int size, int index) {
+  //Just for debugging, prints idx w/ data
+  private static String printArr(int[] data) {
+    String output = "";
+    for (int i = 0; i < data.length; ++i) {
+      output += data[i] + "(" + i + ")" + " ";
+    }
+
+    return output;
+  }
+
+  //idx1 is parent el, idx2 is child el
+  private static int[] swap(int[] data, int idx1, int idx2) {
+    int temp = data[idx1];
+    data[idx1] = data[idx2];
+    data[idx2] = temp;
+
+    return data;
+  }
+
+  private static void pushDown(int[] data, int size, int index) {
     //Swap the element at the desired index with the topmost element so that it can be pushed down
     swap(data, 0, index);
     int elIdx = 0;
@@ -30,7 +49,7 @@ public class MyHeap {
     }
   }
 
-  public static void pushUp(int[] data, int index) {
+  private static void pushUp(int[] data, int index) {
     //Swap the element at the desired index with the bottomost element so that it can be pushed up
     int size = data.length;
     swap(data, size - 1, index);
@@ -49,27 +68,9 @@ public class MyHeap {
     }
   }
 
-  //Just for debugging, prints idx w/ data
-  private static String printArr(int[] data) {
-    String output = "";
-    for (int i = 0; i < data.length; ++i) {
-      output += data[i] + "(" + i + ")" + " ";
-    }
-
-    return output;
-  }
-
-  //idx1 is parent el, idx2 is child el
-  private static int[] swap(int[] data, int idx1, int idx2) {
-    int temp = data[idx1];
-    data[idx1] = data[idx2];
-    data[idx2] = temp;
-
-    return data;
-  }
-
   public static void heapify(int[] data) {
-
+    for (int i = data.length - 1; i >= 0; --i)
+      pushDown(data, data.length, i);
   }
 
   public static void heapsort(int[] data) {

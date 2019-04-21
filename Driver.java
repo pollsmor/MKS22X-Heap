@@ -8,9 +8,9 @@ public class Driver {
   }
 
   public static void main(String[] args) {
-    int[] test = {5, 8, 16, 12, 7, 0, 4, 900, 20, -5, -2};
+    int[] test = {5, 8, 16, 12, 7, 0, 4, 900, 20, -5, -2, 30, 40, 851, 387, 34, 8000, 941, 571, -25491, 8512581};
 
-    System.out.println(HeapHelp.toString(test));
+    //System.out.println(HeapHelp.toString(test));
 
     //MyHeap.pushDown(test, 10, 10);
     //MyHeap.pushUp(test, 2);

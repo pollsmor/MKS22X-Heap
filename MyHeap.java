@@ -17,13 +17,16 @@ public class MyHeap {
       int leftChildIdx = 2 * elIdx + 1;
       int rightChildIdx = 2 * elIdx + 2;
 
-      if (data[elIdx] >= data[leftChildIdx] && data[elIdx] >= data[rightChildIdx]) //children aren't bigger, stop
-        return;
+      if (rightChildIdx == size)  { //only have left branch
+        if (data[elIdx] >= data[leftChildIdx])
+          return;
 
-      else if ( (leftChildIdx < size) && (rightChildIdx >= size) ) { //only have left branch
         swap(data, elIdx, leftChildIdx);
-        elIdx = leftChildIdx;
+        return;
       }
+
+      else if (data[elIdx] >= data[leftChildIdx] && data[elIdx] >= data[rightChildIdx]) //children aren't bigger, stop
+        return;
 
       else {
         if (data[leftChildIdx] >= data[rightChildIdx]) { //left child is bigger
@@ -67,7 +70,7 @@ public class MyHeap {
     heapify(data);
     int size = data.length;
 
-    while (size > 1) {
+    while (size > 0) {
       swap(data, 0, size - 1);
       --size;
       pushDown(data, size, 0);

@@ -1,10 +1,8 @@
 public class MyHeap {
   public static void pushDown(int[] data, int size, int index) {
     //Swap the element at the desired index with the topmost element so that it can be pushed down
-    System.out.println(printArr(data));
     swap(data, 0, index);
     int elIdx = 0;
-    System.out.println("swap: " + printArr(data));
 
     while (2 * elIdx + 1 < size || 2 * elIdx + 2 < size) {
       int leftChildIdx = 2 * elIdx + 1;
@@ -29,8 +27,6 @@ public class MyHeap {
           elIdx = rightChildIdx;
         }
       }
-
-      System.out.println(printArr(data));
     }
   }
 
@@ -51,10 +47,6 @@ public class MyHeap {
     data[idx2] = temp;
 
     return data;
-  }
-
-  private static void pushUp(int[] data, int index) {
-
   }
 
   public static void heapify(int[] data) {

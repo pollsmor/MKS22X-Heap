@@ -30,6 +30,25 @@ public class MyHeap {
     }
   }
 
+  public static void pushUp(int[] data, int index) {
+    //Swap the element at the desired index with the bottomost element so that it can be pushed up
+    int size = data.length;
+    swap(data, size - 1, index);
+    int elIdx = size - 1;
+
+    while ( (elIdx - 1) / 2 >= 0) {
+      int parentIdx = (elIdx - 1) / 2;
+
+      if (data[elIdx] >= data[parentIdx]) //parent is smaller, stop
+        return;
+
+      else { //parent is bigger, keep going
+        swap(data, elIdx, parentIdx);
+        elIdx = parentIdx;
+      }
+    }
+  }
+
   //Just for debugging, prints idx w/ data
   private static String printArr(int[] data) {
     String output = "";

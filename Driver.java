@@ -9,11 +9,11 @@ public class Driver {
   }
 
   public static void main(String[] args) {
-    int[] test = {5, 8, 16, 12, 7, 0, 4, 900, 20, -5};
+    int[] test = {5, 8, 16, 12, 7, 0, 4, 900, 20, -5, -2};
 
     System.out.println(HeapHelp.toString(test));
 
-    MyHeap.pushDown(test, 10, 9);
+    MyHeap.pushDown(test, 10, 10);
 
     System.out.println(HeapHelp.toString(test));
   }
